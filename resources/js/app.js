@@ -17,6 +17,7 @@ import App from './components/App'
 import Home from './components/Home/Home'
 import Hello from './components/Hello'
 import UsersIndex from './components/UsersIndex'
+import UserLogin from './components/Auth/Login'
 
 const router = new VueRouter({
     mode: 'history',
@@ -30,6 +31,16 @@ const router = new VueRouter({
             path: '/hello',
             name: 'hello',
             component: Hello,
+        },
+        {
+          path: '/user',
+          name: 'user',
+          children: [
+            {
+                path: 'login',
+                name: 'login',
+                component: UserLogin,
+            }]
         },
         {
             path: '/users',

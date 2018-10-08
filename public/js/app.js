@@ -13994,7 +13994,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(14);
-module.exports = __webpack_require__(53);
+module.exports = __webpack_require__(54);
 
 
 /***/ }),
@@ -14012,6 +14012,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Hello___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_Hello__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_UsersIndex__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_UsersIndex___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_UsersIndex__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_Auth_Login__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_Auth_Login___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_Auth_Login__);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -14032,6 +14034,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
 
 
 
+
 var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
     mode: 'history',
     routes: [{
@@ -14042,6 +14045,14 @@ var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
         path: '/hello',
         name: 'hello',
         component: __WEBPACK_IMPORTED_MODULE_3__components_Hello___default.a
+    }, {
+        path: '/user',
+        name: 'user',
+        children: [{
+            path: 'login',
+            name: 'login',
+            component: __WEBPACK_IMPORTED_MODULE_5__components_Auth_Login___default.a
+        }]
     }, {
         path: '/users',
         name: 'users.index',
@@ -50040,6 +50051,54 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
@@ -50065,7 +50124,7 @@ var render = function() {
         _c(
           "div",
           {
-            staticClass: "collapse navbar-collapse",
+            staticClass: "mr-auto collapse navbar-collapse",
             attrs: { id: "navbarsExampleDefault" }
           },
           [
@@ -50107,9 +50166,13 @@ var render = function() {
                 1
               ),
               _vm._v(" "),
-              _vm._m(1),
-              _vm._v(" "),
-              _c("li", { staticClass: "nav-item dropdown" }, [
+              _vm._m(1)
+            ]),
+            _vm._v(" "),
+            _vm._m(2),
+            _vm._v(" "),
+            _c("ul", { staticClass: "nav navbar-nav ml-md-5" }, [
+              _c("li", { staticClass: "nav-item dropdown mr-auto" }, [
                 _c(
                   "a",
                   {
@@ -50144,9 +50207,7 @@ var render = function() {
                   1
                 )
               ])
-            ]),
-            _vm._v(" "),
-            _vm._m(2)
+            ])
           ]
         )
       ]
@@ -50157,7 +50218,64 @@ var render = function() {
       { staticClass: "container", attrs: { role: "main" } },
       [_c("router-view")],
       1
-    )
+    ),
+    _vm._v(" "),
+    _c("footer", { staticClass: "container py-5" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-12 col-md" }, [
+          _c(
+            "svg",
+            {
+              staticClass: "d-block mb-2",
+              attrs: {
+                xmlns: "http://www.w3.org/2000/svg",
+                width: "24",
+                height: "24",
+                viewBox: "0 0 24 24",
+                fill: "none",
+                stroke: "currentColor",
+                "stroke-width": "2",
+                "stroke-linecap": "round",
+                "stroke-linejoin": "round"
+              }
+            },
+            [
+              _c("circle", { attrs: { cx: "12", cy: "12", r: "10" } }),
+              _c("line", {
+                attrs: { x1: "14.31", y1: "8", x2: "20.05", y2: "17.94" }
+              }),
+              _c("line", {
+                attrs: { x1: "9.69", y1: "8", x2: "21.17", y2: "8" }
+              }),
+              _c("line", {
+                attrs: { x1: "7.38", y1: "12", x2: "13.12", y2: "2.06" }
+              }),
+              _c("line", {
+                attrs: { x1: "9.69", y1: "16", x2: "3.95", y2: "6.06" }
+              }),
+              _c("line", {
+                attrs: { x1: "14.31", y1: "16", x2: "2.83", y2: "16" }
+              }),
+              _c("line", {
+                attrs: { x1: "16.62", y1: "12", x2: "10.88", y2: "21.94" }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _c("small", { staticClass: "d-block mb-3 text-muted" }, [
+            _vm._v("© 2017-2018")
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._m(3),
+        _vm._v(" "),
+        _vm._m(4),
+        _vm._v(" "),
+        _vm._m(5),
+        _vm._v(" "),
+        _vm._m(6)
+      ])
+    ])
   ])
 }
 var staticRenderFns = [
@@ -50209,6 +50327,154 @@ var staticRenderFns = [
         },
         [_vm._v("Search")]
       )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-6 col-md" }, [
+      _c("h5", [_vm._v("Features")]),
+      _vm._v(" "),
+      _c("ul", { staticClass: "list-unstyled text-small" }, [
+        _c("li", [
+          _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
+            _vm._v("Cool stuff")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
+            _vm._v("Random feature")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
+            _vm._v("Team feature")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
+            _vm._v("Stuff for developers")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
+            _vm._v("Another one")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
+            _vm._v("Last time")
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-6 col-md" }, [
+      _c("h5", [_vm._v("Resources")]),
+      _vm._v(" "),
+      _c("ul", { staticClass: "list-unstyled text-small" }, [
+        _c("li", [
+          _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
+            _vm._v("Resource")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
+            _vm._v("Resource name")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
+            _vm._v("Another resource")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
+            _vm._v("Final resource")
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-6 col-md" }, [
+      _c("h5", [_vm._v("Resources")]),
+      _vm._v(" "),
+      _c("ul", { staticClass: "list-unstyled text-small" }, [
+        _c("li", [
+          _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
+            _vm._v("Business")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
+            _vm._v("Education")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
+            _vm._v("Government")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
+            _vm._v("Gaming")
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-6 col-md" }, [
+      _c("h5", [_vm._v("About")]),
+      _vm._v(" "),
+      _c("ul", { staticClass: "list-unstyled text-small" }, [
+        _c("li", [
+          _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
+            _vm._v("Team")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
+            _vm._v("Locations")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
+            _vm._v("Privacy")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
+            _vm._v("Terms")
+          ])
+        ])
+      ])
     ])
   }
 ]
@@ -50538,6 +50804,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -50585,7 +50859,6 @@ var getUsers = function getUsers(page, callback) {
             if (!this.meta) {
                 return;
             }
-
             var _meta = this.meta,
                 current_page = _meta.current_page,
                 last_page = _meta.last_page;
@@ -50612,9 +50885,6 @@ var getUsers = function getUsers(page, callback) {
             _this.setData(err, data);
             next();
         });
-    },
-    created: function created() {
-        this.fetchData();
     },
 
     methods: {
@@ -50658,12 +50928,6 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "users" }, [
-    _vm.loading
-      ? _c("div", { staticClass: "loading" }, [
-          _vm._v("\n        Loading...\n    ")
-        ])
-      : _vm._e(),
-    _vm._v(" "),
     _vm.error
       ? _c("div", { staticClass: "error" }, [
           _c("p", [_vm._v(_vm._s(_vm.error))]),
@@ -50687,48 +50951,79 @@ var render = function() {
     _vm._v(" "),
     _vm.users
       ? _c(
-          "ul",
+          "div",
+          { staticClass: "list-group" },
           _vm._l(_vm.users, function(ref) {
             var name = ref.name
             var email = ref.email
-            return _c("li", [
-              _c("strong", [_vm._v("Name:")]),
-              _vm._v(" " + _vm._s(name) + ",\n            "),
-              _c("strong", [_vm._v("Email:")]),
-              _vm._v(" " + _vm._s(email) + "\n        ")
-            ])
+            return _c(
+              "a",
+              { staticClass: "list-group-item", attrs: { href: "#" } },
+              [
+                _c("span", [_vm._v("Name: ")]),
+                _vm._v(_vm._s(name) + "\n            "),
+                _c("span", [_vm._v("Email: ")]),
+                _vm._v(_vm._s(email) + "\n        ")
+              ]
+            )
           })
         )
       : _vm._e(),
     _vm._v(" "),
-    _c("div", { staticClass: "pagination" }, [
-      _c(
-        "button",
-        {
-          attrs: { disabled: !_vm.prevPage },
-          on: {
-            click: function($event) {
-              $event.preventDefault()
-              return _vm.goToPrev($event)
-            }
-          }
-        },
-        [_vm._v("Previous")]
-      ),
-      _vm._v("\n        " + _vm._s(_vm.paginatonCount) + "\n        "),
-      _c(
-        "button",
-        {
-          attrs: { disabled: !_vm.nextPage },
-          on: {
-            click: function($event) {
-              $event.preventDefault()
-              return _vm.goToNext($event)
-            }
-          }
-        },
-        [_vm._v("Next")]
-      )
+    _c("nav", { attrs: { "aria-label": "Page navigation example" } }, [
+      _c("ul", { staticClass: "pagination" }, [
+        _c(
+          "li",
+          { staticClass: "page-item", attrs: { disabled: !_vm.prevPage } },
+          [
+            _c(
+              "a",
+              {
+                staticClass: "page-link",
+                attrs: { href: "#", "aria-label": "Previous" },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.goToPrev($event)
+                  }
+                }
+              },
+              [
+                _c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("«")]),
+                _vm._v(" "),
+                _c("span", { staticClass: "sr-only" }, [_vm._v("Previous")])
+              ]
+            )
+          ]
+        ),
+        _vm._v(
+          "\n            " + _vm._s(_vm.paginatonCount) + "\n            "
+        ),
+        _c(
+          "li",
+          { staticClass: "page-item", attrs: { disabled: !_vm.nextPage } },
+          [
+            _c(
+              "a",
+              {
+                staticClass: "page-link",
+                attrs: { href: "#", "aria-label": "Next" },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.goToNext($event)
+                  }
+                }
+              },
+              [
+                _c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("»")]),
+                _vm._v(" "),
+                _c("span", { staticClass: "sr-only" }, [_vm._v("Next")])
+              ]
+            )
+          ]
+        )
+      ])
     ])
   ])
 }
@@ -50744,6 +51039,36 @@ if (false) {
 
 /***/ }),
 /* 53 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = null
+/* template */
+var __vue_template__ = null
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/Auth/Login.vue"
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 54 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

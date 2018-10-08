@@ -10573,30 +10573,12 @@ a.text-dark:focus {
   height: 8px;
 }
 
-.list-group-item {
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.list-group-item.active,
-.list-group-item:hover,
-.list-group-item:focus {
-  color: #fff;
-}
-
-.list-group-item.active {
-  font-weight: bold;
-}
-
-.list-group-item.active:hover {
-  background-color: #f8f9fa;
-}
-
-.list-group-item.disabled:hover {
-  color: #6c757d;
-}
-
 body {
   margin-top: 5rem;
+}
+
+.list-group-item {
+  color: #212529;
 }
 
 .navbar-laravel {

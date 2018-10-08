@@ -1,9 +1,5 @@
 <template>
     <div class="users">
-        <div class="loading" v-if="loading">
-            Loading...
-        </div>
-
         <div v-if="error" class="error">
             <p>{{ error }}</p>
             <p>
@@ -12,18 +8,30 @@
                 </button>
             </p>
         </div>
+        <div class="list-group" v-if="users">
+            <a  v-for="{ name, email } in users" href="#" class="list-group-item">
+                <span>Name: </span>{{ name }}
+                <span>Email: </span>{{ email }}
+            </a>
 
-        <ul v-if="users">
-            <li v-for="{ name, email } in users">
-                <strong>Name:</strong> {{ name }},
-                <strong>Email:</strong> {{ email }}
-            </li>
-        </ul>
-        <div class="pagination">
-            <button :disabled="! prevPage" @click.prevent="goToPrev">Previous</button>
-            {{ paginatonCount }}
-            <button :disabled="! nextPage" @click.prevent="goToNext">Next</button>
         </div>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item" :disabled="! prevPage" >
+                    <a class="page-link" href="#" aria-label="Previous" @click.prevent="goToPrev">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                {{ paginatonCount }}
+                <li class="page-item" :disabled="! nextPage">
+                    <a class="page-link" href="#" @click.prevent="goToNext" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </div>
 </template>
 <script>
@@ -74,7 +82,6 @@
                 if (! this.meta) {
                     return;
                 }
-
                 const { current_page, last_page } = this.meta;
 
                 return `${current_page} of ${last_page}`;
@@ -93,9 +100,6 @@
                 this.setData(err, data);
                 next();
             });
-        },
-        created() {
-            this.fetchData();
         },
         methods: {
             goToNext() {
