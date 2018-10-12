@@ -27,8 +27,9 @@
                         <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">User</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown01">
                             <router-link :to="{ name: 'users.index' }" class="dropdown-item">Users list</router-link>
-                            <router-link :to="{ name: 'user.login' }" class="dropdown-item">Login</router-link>
-                            <router-link :to="{ name: 'user.register' }" class="dropdown-item">Register</router-link>
+                            <router-link v-if="!$auth.check()" :to="{ name: 'user.login' }" class="dropdown-item">Login</router-link>
+                            <router-link v-if="!$auth.check()" :to="{ name: 'user.register' }" class="dropdown-item">Register</router-link>
+                            <a v-if="$auth.check()" class="dropdown-item" href="#" @click.prevent="$auth.logout()">Logout</a>
                         </div>
                     </li>
                 </ul>

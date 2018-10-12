@@ -55,7 +55,7 @@ class RegisterController extends Controller
         $validation = $this->validator($request->all());
         if ($validation->fails()) {
             return response()->json([
-                'status' => 'error',
+                'status' => 'validation_error',
                 'errors' => $validation->errors()
             ], 422);
         }

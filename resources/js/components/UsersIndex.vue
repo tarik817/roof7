@@ -41,7 +41,7 @@
         const params = {page};
 
         axios
-            .get('/api/users', {params})
+            .get('/users', {params})
             .then(response => {
                 callback(null, response.data);
             }).catch(error => {
