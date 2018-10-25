@@ -10,6 +10,6 @@ class UsersController extends Controller
 {
     public function index()
     {
-        return UserResource::collection(User::paginate(10));
+        return UserResource::collection(User::orderBy('created_at', 'desc')->paginate(10));
     }
 }

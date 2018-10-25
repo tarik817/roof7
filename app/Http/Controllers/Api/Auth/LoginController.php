@@ -2,30 +2,23 @@
 
 namespace App\Http\Controllers\Api\Auth;
 
+use App\AuthenticateUser;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
-class LoginController extends Controller
+class LoginController extends Controller implements LoginUserListener
 {
 
+    private $allowedSocialNetworks = ['github', 'facebook'];
     /**
      * Where to redirect users after registration.
      *
      * @var string
      */
     protected $redirectTo = '/home';
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
 
     /**
      * Login user.
@@ -35,11 +28,16 @@ class LoginController extends Controller
      */
     public function login(Request $request)
     {
+        $validation = Validator::make($request->all(), [
+            'email' => 'required|string|email|max:255',
+            'password' => 'required|string|min:3',
+        ]);
         $credentials = $request->only('email', 'password');
-        if ($token = $this->guard()->attempt($credentials)) {
-            return response()->json(['status' => 'success'], 200)->header('Authorization', $token);
+        if ((!$token = $this->guard()->attempt($credentials)) || $validation->fails()) {
+            return $this->userFailedAuthenticate();
         }
-        return response()->json(['error' => 'login_error'], 401);
+
+        return $this->userHasAuthenticate($token);
     }
 
     /**
@@ -80,11 +78,17 @@ class LoginController extends Controller
     public function refresh()
     {
         if ($token = $this->guard()->refresh()) {
-            return response()
-                ->json(['status' => 'successs'], 200)
-                ->header('Authorization', $token);
+            return $this->userHasAuthenticate($token);
         }
-        return response()->json(['error' => 'refresh_token_error'], 401);
+        return $this->userFailedAuthenticate();
+    }
+
+    public function loginWithSocial($socialNetwork, AuthenticateUser $authenticateUser, Request $request)
+    {
+        if (!in_array($socialNetwork, $this->allowedSocialNetworks)) {
+            return $this->userFailedAuthenticate();
+        }
+        return $authenticateUser->execute($request->has('code'), $socialNetwork, $this);
     }
 
     /**
@@ -95,5 +99,22 @@ class LoginController extends Controller
     private function guard()
     {
         return Auth::guard();
+    }
+
+    public function userHasAuthenticate($token, $needRedirect = false)
+    {
+        if ($needRedirect) {
+            return redirect('/user/login?loginToken=' . $token);
+        }
+
+        return response()
+            ->json(['status' => 'success'], 200)
+            ->header('Authorization', $token);
+    }
+
+    public function userFailedAuthenticate()
+    {
+        return response()
+            ->json(['error' => 'auth_error'], 401);
     }
 }
