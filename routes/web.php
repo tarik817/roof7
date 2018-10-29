@@ -11,4 +11,6 @@
 |
 */
 
+Route::get('/social/login/{socialNetwork}', 'SocialAuthController@login');
+
 Route::get('/{any}', 'SpaController@index')->where('any', '.*');

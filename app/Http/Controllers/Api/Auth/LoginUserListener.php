@@ -10,5 +10,5 @@ namespace App\Http\Controllers\Api\Auth;
 
 interface LoginUserListener
 {
-    public function userHasAuthenticate($token, $needRedirect = false);
+    public function userHasAuthenticate($token);
 }

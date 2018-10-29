@@ -42,7 +42,7 @@ class AuthenticateUser {
         $user = $this->users->findByEmailOrCreate($this->getSocialNetworkUser($socialNetwork));
         $token = $this->auth::guard()->login($user);
 
-        return $listener->userHasAuthenticate($token, true);
+        return $listener->userHasAuthenticate($token);
     }
 
     public function getAuthorizationFirst($socialNetwork)

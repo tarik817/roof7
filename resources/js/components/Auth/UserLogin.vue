@@ -27,6 +27,9 @@
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
+            <div class="card-footer"><a href="/social/login/github">
+                <i class="fa fa-2x fa-github" aria-hidden="true"></i> Login with github</a>
+            </div>
         </div>
     </div>
 </template>
@@ -41,18 +44,23 @@
             }
         },
         methods: {
-            login() {
-                var redirect = this.$auth.redirect();
-                var app = this;
-                this.$auth.login({
-                    params: {
+            login(token) {
+                var data = {};
+                if (token) {
+                    data = {
+                        token: token
+                    };
+                } else {
+                    data = {
                         email: app.email,
                         password: app.password
-                    },
+                    };
+                }
+                var app = this;
+                this.$auth.login({
+                    params: data,
                     success: function () {
-                        // handle redirection
-                        const redirectTo = redirect ? redirect.from.name : this.$auth.user().role === 2 ? 'admin.dashboard' : 'dashboard';
-                        this.$router.push({name: redirectTo})
+                        this.redirect();
                     },
                     error: function () {
                         app.has_error = true
@@ -60,7 +68,22 @@
                     rememberMe: true,
                     fetchUser: true
                 })
+            },
+            redirect() {
+                var redirect = this.$auth.redirect();
+                const redirectTo = redirect ? redirect.from.name : this.$auth.user().role === 2 ? 'admin.dashboard' : 'home';
+                this.$router.push({name: redirectTo})
+            },
+            loginByToken() {
+                var urlParams = new URLSearchParams(window.location.search);
+                if (urlParams.has('loginToken')) {
+                    console.log('here');
+                    this.login(urlParams.get('loginToken'));
+                }
             }
+        },
+        mounted() {
+            this.loginByToken();
         }
     }
 </script>

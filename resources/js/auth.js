@@ -7,7 +7,7 @@ const config = {
     auth: bearer,
     http: axios,
     router: router,
-    tokenDefaultName: 'cool-token',
+    tokenDefaultName: 'socialPrivateInfo',
     tokenStore: ['localStorage'],
     rolesVar: 'role',
     registerData: {
